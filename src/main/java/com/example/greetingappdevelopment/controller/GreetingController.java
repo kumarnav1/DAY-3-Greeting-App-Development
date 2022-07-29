@@ -31,4 +31,21 @@ public class GreetingController {
     public String getByService() {
         return greetingService.getMessage();
     }
+
+    @GetMapping("/hello")
+    public String sayPosting(@RequestParam(required = false) String firstName, @RequestParam(required = false) String lastName) {
+        if (!(firstName == null || lastName == null)) {
+            return greetingService.sayHelloByName(firstName, lastName);
+        }
+
+        if (firstName == null && lastName == null) {
+            return "Hello world!";
+        } else if (firstName == null) {
+            firstName = "";
+            return greetingService.sayHelloByName(firstName, lastName);
+        } else {
+            lastName = "";
+            return greetingService.sayHelloByName(firstName, lastName);
+        }
+    }
 }

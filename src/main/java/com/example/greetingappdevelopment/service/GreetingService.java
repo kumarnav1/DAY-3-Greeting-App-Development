@@ -7,4 +7,8 @@ public class GreetingService {
     public String getMessage() {
         return "hello ";
     }
+
+    public String sayHelloByName(String firstName, String lastName) {
+        return "Hello "+firstName+" "+lastName;
+    }
 }
