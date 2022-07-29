@@ -5,6 +5,7 @@ import com.example.greetingappdevelopment.service.GreetingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -59,5 +60,10 @@ public class GreetingController {
     public Optional<GreetingData> getMsgById(@PathVariable int id) {
         Optional<GreetingData> response = greetingService.getMsgById(id);
         return response;
+    }
+
+    @GetMapping("/getall")
+    public List<GreetingData> getAllMsg(){
+        return greetingService.getAllMsg();
     }
 }
