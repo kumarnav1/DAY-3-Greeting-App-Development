@@ -5,6 +5,8 @@ import com.example.greetingappdevelopment.service.GreetingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RestController
 public class GreetingController {
     @Autowired
@@ -48,8 +50,14 @@ public class GreetingController {
     }
 
     @PostMapping("/getdata")
-    public GreetingData getdata(@RequestBody GreetingData greetingData){
+    public GreetingData getdata(@RequestBody GreetingData greetingData) {
         GreetingData greetingData1 = greetingService.postData(greetingData);
         return greetingData1;
+    }
+
+    @GetMapping("/getbyid/{id}")
+    public Optional<GreetingData> getMsgById(@PathVariable int id) {
+        Optional<GreetingData> response = greetingService.getMsgById(id);
+        return response;
     }
 }
